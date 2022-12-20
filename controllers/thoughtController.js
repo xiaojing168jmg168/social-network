@@ -4,7 +4,7 @@ module.exports = {
     // Get all thoughts
     getThoughts(req, res){
         Thought.find()
-            .then((thoughts) => res.json(thoughts));
+            .then((thoughts) => res.json(thoughts))
             .catch((err) => res.status(500).json(err));
     },
     // Get single thought
@@ -18,13 +18,13 @@ module.exports = {
            )
            .catch((err) => res.status(500).json(err));
     },
-    // Create a thought and add thought's _id to the associated user's thoughts
+    // Create a thought and push thought's _id to the associated user's thoughts
     createThought(req, res){
         Thought.create(req.body)
-            .then((thought) => {
+            .then(({_id}) => {
                 return User.findOneAndUpdate(
                     {_id: req.body.userId},
-                    {$addToSet:{thoughts: thought._id}},
+                    {$push:{thoughts: _id}},
                     {new: true}
                 );
             })
@@ -54,11 +54,11 @@ module.exports = {
     },
     // Delete a thought
     deleteThought(req, res){
-        Thought.findOneAndRemove({_id: req.params.thoughtId})
+        Thought.findOneAndDelete({_id: req.params.thoughtId})
         .then((thought) =>
             !thought
             ? res.status(404).json({message: 'No thought found with this id!'})
-            : user.findOneAndUpdate(
+            : User.findOneAndUpdate(
                 {thoughts: req.params.thoughtId},
                 {$pull: {thoughts: req.params.thoughtId}},
                 {new: true}
@@ -89,7 +89,7 @@ module.exports = {
     deleteReaction(req, res){
         Thought.findOneAndUpdate(
             {_id: req.params.thoughtId},
-            {$pull: {reaction: {reactionId: req.params.reactionId}}},
+            {$pull: {reactions: {reactionId: req.params.reactionId}}},
             {runValidators: true, new: true}
         )
         .then((thought) =>
