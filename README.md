@@ -6,8 +6,8 @@
 
 
 ## Description
-🔍 This is an API for a social network application where users can share their thoughts, add friend list, remove friend, and react to friends thoughts. It uses Express.js for routing, a MongoDB database, the mongoose ODM, and moment.js to format timestamps. The seed data is created using Insomnia.
-To see how the API works using Insomnia, below link is the **walk-through demonstration videos**:
+🔍 This is an API for a social network application where users can share their thoughts/comments, add to a friends list, remove friend(s), and react to friends thoughts. It uses Express.js for routing, a MongoDB database, the Mongoose ODM, and moment.js to format timestamps. The seed data is created using Insomnia.
+To see how the API works using Insomnia, the below link is the **walk-through demonstration videos**:
 https://drive.google.com/file/d/1DhH9WTA51WXPyug_9IyxcF9DA6l_bER0/view?usp=share_link
 
 <video  width="500" height="400" controls>
@@ -18,7 +18,7 @@ https://drive.google.com/file/d/1DhH9WTA51WXPyug_9IyxcF9DA6l_bER0/view?usp=share
 https://user-images.githubusercontent.com/110792983/208991759-bcf586bb-738c-4cf7-95b6-92a426c0fc08.mp4
 
 
-On the left side below screenshot, you can see all  GET POST PUT DELETE route for Users, Thoughts, Friends, Reactions.
+On the left side below screenshot, you can see the GET POST PUT DELETE routes for Users, Thoughts, Friends, Reactions.
 ![screenshot](utils/social-network.jpg)
 
 ## Table of Contents
@@ -32,7 +32,7 @@ On the left side below screenshot, you can see all  GET POST PUT DELETE route fo
 
 
 ## Installation
-1. Clone repository to use the application on local machine<br/>
+1. Clone the repository to use the application on a local machine<br/>
 2. Node.js and MongoDB is required to run the application.<br/>
 3. To install necessary dependencies, run the following command: ```npm i```<br/>
 
